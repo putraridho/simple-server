@@ -19,9 +19,13 @@ function handleErrors(err: { [key: string]: any }) {
 }
 
 function createToken(id: string, keepMeLoggedIn: boolean) {
-  return jwt.sign({ id }, process.env.SALT || "secret", {
-    expiresIn: keepMeLoggedIn ? "1y" : "1d",
-  });
+  return jwt.sign(
+    { id },
+    "climb or root sick rear will hope effect universe available journey listen pond compare slope break empty unusual kept lead alike likely driven escape",
+    {
+      expiresIn: keepMeLoggedIn ? "1y" : "1d",
+    }
+  );
 }
 
 class Auth {

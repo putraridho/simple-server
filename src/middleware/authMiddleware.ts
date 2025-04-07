@@ -7,7 +7,7 @@ export function requireAuth(req: Request, res: Response, next: NextFunction) {
   if (token) {
     jwt.verify(
       token,
-      process.env.SALT || "secret",
+      "climb or root sick rear will hope effect universe available journey listen pond compare slope break empty unusual kept lead alike likely driven escape",
       (err: any, decodedToken: any) => {
         if (err) {
           console.log(err.message);
