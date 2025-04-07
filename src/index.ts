@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 import { authRoutes } from "./routes";
 
 const app = express();
-const PORT = 8000;
+const PORT = 8080;
 
 // Middleware to parse JSON
 app.use(express.json());
