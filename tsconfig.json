@@ -5,7 +5,7 @@
     "strict": true, // Enable all strict type-checking options
     "esModuleInterop": true, // Enable compatibility with CommonJS and ES Modules
     "skipLibCheck": true, // Skip type checking of declaration files
-    "outDir": "./dist", // Redirect output structure to the 'dist' folder
+    "outDir": "./public", // Redirect output structure to the 'dist' folder
     "rootDir": "./src", // Specify the root directory of input files
     "resolveJsonModule": true, // Allow importing .json files
     "typeRoots": ["./node_modules/@types"] // Specify type declaration files to include
