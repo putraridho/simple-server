@@ -6,13 +6,19 @@ function handleErrors(err: { [key: string]: any }) {
   console.error(err.message);
   let errors: { [key: string]: any } = {};
 
-  if (err.message.includes("user validation failed")) {
-    Object.values(err.errors).forEach((e: any) => {
-      errors[e.properties.path] = e.properties.message;
-    });
-  } else {
-    errors.message = "Oops, something went wrong";
+  if (err.code === 11000) {
+    if (err.message.includes("user validation failed")) {
+      Object.values(err.errors).forEach((e: any) => {
+        errors[e.properties.path] = e.properties.message;
+      });
+      return errors;
+    }
+
+    errors.message = err.message;
+    return errors;
   }
+
+  errors.message = "Oops, something went wrong";
 
   return errors;
 }

@@ -16,6 +16,8 @@ const userSchema = new mongoose.Schema({
     unique: [true, "Email already exists"],
     lowercase: true,
     validate: [isEmail, "Invalid email format"],
+    sparse: true,
+    index: true,
   },
   password: {
     type: String,
