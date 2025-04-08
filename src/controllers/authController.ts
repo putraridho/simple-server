@@ -7,19 +7,14 @@ function handleErrors(err: { [key: string]: any }) {
   console.error(err.message);
   let errors: { [key: string]: any } = {};
 
-  if (err.code === 11000) {
-    if (err.message.includes("user validation failed")) {
-      Object.values(err.errors).forEach((e: any) => {
-        errors[e.properties.path] = e.properties.message;
-      });
-      return errors;
-    }
-
-    errors.message = err.message;
+  if (err.message.includes("user validation failed")) {
+    Object.values(err.errors).forEach((e: any) => {
+      errors[e.properties.path] = e.properties.message;
+    });
     return errors;
   }
 
-  errors.message = "Oops, something went wrong";
+  errors.message = err.message || "Oops, something went wrong";
 
   return errors;
 }
@@ -61,7 +56,7 @@ class Auth {
         if (match) {
           const token = createToken(user._id.toString(), keepMeLoggedIn);
 
-          res.cookie("jwt", token, {
+          res.cookie("oid", token, {
             httpOnly: true,
             maxAge: keepMeLoggedIn
               ? 365 * 24 * 60 * 60 * 1000
