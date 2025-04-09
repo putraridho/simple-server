@@ -11,19 +11,14 @@ const PORT = 8080;
 // Middleware to parse JSON
 app.use(express.json());
 app.use(cookieParser());
-var whitelist = [
-  "https://convertium-monorepo.vercel.app/login",
-  "http://localhost:3000",
-];
+var origin =
+  process.env.NODE_ENV === "production"
+    ? "https://convertium-monorepo.vercel.app/login"
+    : "http://localhost:3000";
+
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || whitelist.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin,
     credentials: true,
   })
 );
