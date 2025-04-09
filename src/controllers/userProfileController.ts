@@ -24,10 +24,8 @@ class UserProfile {
       token: string;
       user_id: string;
     };
-    console.log("🚀 ~ UserProfile ~ payload ~ payload:", payload);
     try {
       const userData = await User.findOne({ _id: payload.id }).exec();
-      console.log("🚀 ~ UserProfile ~ meGet ~ userData:", userData);
       if (!userData) {
         res.status(404).send("User not found");
       } else {
@@ -41,13 +39,13 @@ class UserProfile {
   }
 
   async profileUpdate(req: Request, res: Response) {
-    const user = jwt.decode(req.cookies.oid) as {
+    const payload = jwt.decode(req.cookies.oid) as {
       id: string;
       token: string;
       user_id: string;
     };
     try {
-      const result = await User.updateOne({ user_id: user.id }, req.body);
+      const result = await User.updateOne({ _id: payload.id }, req.body);
       if (result.matchedCount === 0) {
         res.status(404).send("User not found");
       } else {
