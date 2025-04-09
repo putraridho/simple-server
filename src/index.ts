@@ -12,8 +12,8 @@ const PORT = 8080;
 app.use(express.json());
 app.use(cookieParser());
 var origin =
-  process.env.NODE_ENV === "production"
-    ? "https://convertium-monorepo.vercel.app/login"
+  process.env.APP_ENV === "production"
+    ? "https://convertium-monorepo.vercel.app"
     : "http://localhost:3000";
 
 app.use(
