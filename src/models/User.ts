@@ -38,10 +38,40 @@ const userSchema = new mongoose.Schema({
     type: String,
   },
   date_of_birth: {
-    type: Date,
+    type: String,
   },
   salutation: {
     type: String,
+  },
+  country: {
+    type: String,
+  },
+  gender: {
+    type: String,
+  },
+  martial_status: {
+    type: String,
+  },
+  spouse_salutation: {
+    type: String,
+  },
+  spouse_first_name: {
+    type: String,
+  },
+  spouse_last_name: {
+    type: String,
+  },
+  hobbies: {
+    type: [String],
+  },
+  sports: {
+    type: [String],
+  },
+  music_genres: {
+    type: [String],
+  },
+  movies: {
+    type: [String],
   },
 });
 
